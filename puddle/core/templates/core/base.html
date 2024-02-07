@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            .contact-info {
+              margin-top: 20px;
+            }
+            .contact-info i {
+              margin-right: 10px;
+            }
+          </style>
+        
+        <title>{% block title %}{% endblock %} | Puddle</title>
+    </head>
+    <body>
+        <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
+            <a href="/" class="text-xl font-semi-bold">Puddle</a>
+
+            <div class="space-x-6">
+                <a href="{% url 'item:new' %}" class="text-lg font-semibold hover:text-gray-500">New Item</a>
+                <a href="{% url 'item:items' %}" class="text-lg font-semibold hover:text-gray-500">Browse</a>
+                 
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'conversation:inbox' %}" class="px-6 py-3 text-lg font-semibold bg-teal-300 text-white rounded-xl hover:bg-teal-700">Inbox</a>
+                    <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
+                    <a href="{% url 'core:logout' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Logout</a>
+
+                {% else %}
+                    <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a>
+                    <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+        <div class="px-6 py-6">
+            {% block content%}
+            {% endblock %}
+        </div>
+
+        <footer class="py-6 px-6 flex justify-between bg-gray-500">
+            <div class="w-1/3 pr-10">
+                <h3 class="mb-3 font-semibold text-gray-800">About</h3>
+
+                <p class="text-sm text-teal-500">This is an online marketing site that was created by Faith Sang and its uses the django framework with python, bootstrap, html and a liitle css as the major languages. It is in the process of programming to improve functionality but the major functionality is complete.</p>
+            </div>
+            <div class="w-1/3">
+                <h3 class="mb-3 font-semibold text-gray-800">Channels</h3>
+                    <div class="social-icons">
+                      <a href="https://twitter.com/Faith__sang" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i>
+                        <span class="ms-2 text-teal-500">Twitter</span>
+                      </a><br>
+                      <a href="https://www.instagram.com/faysang_/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                        <span class="ms-2 text-teal-500">Instagram</span>
+                      </a>
+                    </div>
+                
+            </div>
+            <div class="w-1/3">
+                <h3 class="mb-3 font-semibold  text-gray-800">Menu</h3>
+
+                <ul class="space-y-2">
+                    <li><a href="{% url 'core:about' %}" class="text-teal-500 hover:text-teal-700">About Us</a></li>
+                    <li><a href="{% url 'core:contact' %}" class="text-teal-500 hover:text-teal-700">Contact</a></li>
+                    <li><a href="#" class="text-teal-500 hover:text-teal-700">Privacy</a></li>
+                    <li><a href="#" class="text-teal-500 hover:text-teal-700">Terms of Use</a></li>
+                </ul>
+            </div>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

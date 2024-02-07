@@ -1,0 +1,20 @@
+{% extends 'core/base.html'%}
+
+{% block title %}Contact{% endblock %}
+
+{% block content%}
+    <h1 class="text-3xl"> Contact </h1>
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+        <h1>Meet Us</h1>
+        <div class="grid grid-cols-3 gap-3">
+            <div class="contact-info">
+                <p>
+                  <i class="fas fa-phone"></i> <span>{{ contact_info.phone }}</span><br>
+                  <i class="fas fa-envelope"></i>  <span>{{ contact_info.email|safe }}</span><br>
+                  <i class="fas fa-map-marker-alt"></i>  <span>{{ contact_info.location }}</span>
+                </p>
+              </div>
+        </div>
+    </div>
+
+{% endblock %}
